@@ -27,35 +27,12 @@ class Subject(IObservable):
 
     def notifyObservers(self, *args, **kwargs):
         for observer in self.observers:
-            observer.notify(args[0], 9)
+            observer.notify(*args)
 
 
 class IObserver(metaclass=ABCMeta):
     def notify():
         pass
-
-class Tool():
-    def __init__(self, tool_name):
-        self.tool_name = tool_name
-
-class Step():
-    complete: bool
-    tool: Tool
-
-    def __init__(self):
-        self.complete = False
-
-    def addTool(self, tool):
-        self.tool = tool
-
-    def removeTool(self,tool):
-        self.tool = None
-
-    def completeStep(self):
-        self.complete = True
-    
-    def reset(self):
-        self.complete = False
 
 
 class Station(IObserver):
